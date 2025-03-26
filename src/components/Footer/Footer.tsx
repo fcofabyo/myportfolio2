@@ -19,7 +19,8 @@ const Footer: React.FC = () => {
                 window.open("https://github.com/fcofabyo/fcofabyo")
               }
             >
-              <GitHubIcon />
+              <GitHubIcon sx={{ color: "#000", fontSize: 35 }} />{" "}
+              {/* Cor preta para o GitHub */}
             </IconButton>
             <IconButton
               onClick={() =>
@@ -28,14 +29,19 @@ const Footer: React.FC = () => {
                 )
               }
             >
-              <LinkedInIcon />
+              <LinkedInIcon sx={{ color: "#0077b5", fontSize: 37 }} />{" "}
+              {/* Cor azul para o LinkedIn */}
             </IconButton>
-            <IconButton href="mailto:example@example.com" target="_blank">
-              <EmailIcon />
+            <IconButton
+              href="mailto:franciscofabioinffo@gmail.com"
+              target="_blank"
+            >
+              <EmailIcon sx={{ color: "#d44638", fontSize: 35 }} />{" "}
+              {/* Cor vermelha para o e-mail */}
             </IconButton>
           </Box>
           <Typography textAlign="center">
-            © 2025 Francisco Fabio - All rights reserved
+            © 2025 Francisco Fabio - Direitos reservados
           </Typography>
         </Container>
       </Box>

@@ -1,8 +1,8 @@
-import { Box, Container, Grid, Typography, styled } from "@mui/material";
-import ProjectCard, {
-  ProjectCardProps,
-} from "../../../../components/ProjectCard/ProjectCard";
-import AnimationComponent from "../../../../components/AnimationComponent/AnimationComponent";
+import React, { useState } from "react";
+import { Box, Container, Typography, styled, IconButton } from "@mui/material";
+import { motion } from "framer-motion";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import ProjectCard from "../../../../components/ProjectCard/ProjectCard";
 
 const ProjectsSection: React.FC = () => {
   const StyledExperience = styled("div")(({ theme }) => ({
@@ -11,80 +11,141 @@ const ProjectsSection: React.FC = () => {
 
   const projects = [
     {
-      title: "Project Exemple",
-      subtitle: "Jul 2023 - Dez 2023",
+      title: "Projeto 1",
+      subtitle: "Jan 2025 - Mar 2025",
       srcImg: "/src/assets/images/project-trello.png",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras porta semper velit vel rutrum. Aliquam vulputate, nisi eget tristique mattis, nisi sem faucibus eros, a auctor felis sem ut mauris. Phasellus a ultrices elit. Curabitur ut diam eu orci auctor pretium.",
-      technologies: "Technologies: JavaScript, HTML, CSS, Canvas Graphics",
-      websiteURL: "https://trello.com/",
-      codeURL: "https://github.com/",
+        "Foi utilizado tecnologias como JavaScript, TypeScript, CSS com Tailwind, React, Next.js, integração ao banco de dados PostgreSQL usando o Prisma.IO. O projeto foi pensado para ser responsivo, garantindo uma ótima experiência no mobile, e o deploy foi realizado na Vercel",
+      technologies:
+        "Technologies: JavaScript, HTML, CSS(Tailwind), React, Next.js, PostgreSQL, Prisma.IO",
+      websiteURL: "https://donalds-react-next.vercel.app/fsw-donalds",
+      codeURL: "https://github.com/fcofabyo/Donalds-react-next",
     },
     {
-      title: "Project Exemple",
-      subtitle: "Jul 2023 - Dez 2023",
+      title: "Projeto 2",
+      subtitle: "Jul 2024 - Jul 2024",
       srcImg: "/src/assets/images/project-financas.png",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras porta semper velit vel rutrum. Aliquam vulputate, nisi eget tristique mattis, nisi sem faucibus eros, a auctor felis sem ut mauris. Phasellus a ultrices elit. Curabitur ut diam eu orci auctor pretium.",
-      technologies: "Technologies: JavaScript, HTML, CSS, Canvas Graphics",
-      websiteURL: "https://trello.com/",
-      codeURL: "https://github.com/",
+        "Desenvolvi um gerenciador de tarefas em React, trazendo em si o método CRUD (Criar, Ler, Atualizar e Deletar), permitindo uma gestão simples e eficiente das tarefas. O projeto foi desenvolvido com o intuito de aprender e praticar os conceitos de React e Tailwind. Foi utilizado o localStorage para armazenar as tarefas adicionadas.",
+      technologies: "Technologies: JavaScript, HTML, CSS(Tailwind), React",
+      websiteURL: "https://curso-de-react-liart.vercel.app/",
+      codeURL: "https://github.com/fcofabyo/curso-de-react",
     },
     {
-      title: "Project Craze Maze",
-      subtitle: "Jul 2019 - May 2019",
+      title: "Projeto Labirinto",
+      subtitle: "Jul 2024 - Jul 2024",
       srcImg: "/src/assets/images/project1-craze-maze.gif",
       description:
-        "Game to escape the maze, but not only that. An algorithm has been created that randomly generates a new maze each time the game is started. In this game, the user can use the keyboard keys to move until they find the flag and win the game",
-      technologies: "Technologies: JavaScript, HTML, CSS, Canvas Graphics",
-      websiteURL:
-        "https://adrianasaty.github.io/ironhack-project1-craze-maze/index.html",
-      codeURL: "https://github.com/AdrianaSaty/ironhack-project1-craze-maze",
-    },
-    {
-      title: "Project Blotting",
-      subtitle: "Jul 2019 - May 2019",
-      srcImg: "/src/assets/images/project2-blotting.png",
-      description:
-        "Game to escape the maze, but not only that. An algorithm has been created that randomly generates a new maze each time the game is started. In this game, the user can use the keyboard keys to move until they find the flag and win the game",
-      technologies: "Technologies: JavaScript, HTML, CSS, Canvas Graphics",
-      websiteURL:
-        "https://adrianasaty.github.io/ironhack-project1-craze-maze/index.html",
-      codeURL: "https://github.com/AdrianaSaty/ironhack-project1-craze-maze",
+        "Um jogo de labirinto desenvolvido com JavaScript e HTML Canvas. O objetivo é encontrar a saída do labirinto enquanto evita obstáculos. O projeto foi criado para explorar conceitos de lógica de programação e manipulação de gráficos no Canvas.",
+      technologies: "Technologies: JavaScript, HTML, Canvas",
+      websiteURL: "https://example.com/labirinto",
+      codeURL: "https://github.com/fcofabyo/labirinto",
     },
   ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
     <StyledExperience>
-      <Container maxWidth="lg">
-        <Box id="projects" pt={5} pb={3}>
+      <Container>
+        <Box pt={4} pb={4}>
           <Typography
-            variant="h2"
+            variant="h3"
             textAlign="center"
             color="primary.contrastText"
           >
-            Projects
+            Projetos
           </Typography>
         </Box>
-        <Grid container spacing={5} pb={3}>
-          {projects.map((project: ProjectCardProps, index: number) => (
-            <Grid item md={6} key={index}>
-              <AnimationComponent
-                moveDirection={index % 2 == 0 ? "right" : "left"}
-              >
-                <ProjectCard
-                  title={project.title}
-                  subtitle={project.subtitle}
-                  srcImg={project.srcImg}
-                  description={project.description}
-                  technologies={project.technologies}
-                  websiteURL={project.websiteURL}
-                  codeURL={project.codeURL}
-                />
-              </AnimationComponent>
-            </Grid>
-          ))}
-        </Grid>
+        <Box
+          position="relative"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          pb={8}
+          minHeight="500px"
+          marginBottom="50px" // Garante que a altura do container nunca diminua
+        >
+          {/* Botão de voltar */}
+          <IconButton
+            onClick={handlePrev}
+            style={{
+              position: "absolute",
+              left: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 10,
+              color: "white",
+              width: "40px",
+              height: "40px",
+              backgroundColor: "black",
+            }}
+          >
+            <ArrowBackIos
+              style={{
+                fontSize: "25px", // Ajusta o tamanho do ícone
+                marginLeft: "8px", // Corrige o desalinhamento horizontal do ícone
+              }}
+            />
+          </IconButton>
+
+          {/* Container fixo do carrossel */}
+          <div style={{ width: "100%", maxWidth: "600px" }}>
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 100 }}
+              transition={{ duration: 0.5 }}
+              style={{
+                width: "100%",
+                height: "660px", // 🔥 Força o tamanho fixo, evitando movimentação das setas
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                overflow: "hidden",
+              }}
+            >
+              <ProjectCard
+                title={projects[currentIndex].title}
+                subtitle={projects[currentIndex].subtitle}
+                srcImg={projects[currentIndex].srcImg}
+                description={projects[currentIndex].description}
+                technologies={projects[currentIndex].technologies}
+                websiteURL={projects[currentIndex].websiteURL}
+                codeURL={projects[currentIndex].codeURL}
+              />
+            </motion.div>
+          </div>
+
+          {/* Botão de avançar */}
+          <IconButton
+            onClick={handleNext}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 10,
+              color: "white",
+              width: "40px",
+              height: "40px",
+              backgroundColor: "black",
+            }}
+          >
+            <ArrowForwardIos />
+          </IconButton>
+        </Box>
       </Container>
     </StyledExperience>
   );

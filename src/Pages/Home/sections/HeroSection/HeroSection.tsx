@@ -82,7 +82,7 @@ const HeroSection: React.FC = () => {
                 Francisco Fabio
               </Typography>
               <Typewriter
-                text="I'm a Software Developer"
+                text="Desenvolvedor de Software"
                 delay={100}
                 variant="h3"
                 color="#bfa100"
@@ -97,13 +97,13 @@ const HeroSection: React.FC = () => {
                   <Grid item xs={10} md={4}>
                     <StyledButton onClick={() => handleDownload()}>
                       <DownloadIcon />
-                      <Typography>Download CV</Typography>
+                      <Typography>Baixar CV</Typography>
                     </StyledButton>
                   </Grid>
                   <Grid item xs={10} md={4}>
                     <StyledButton onClick={() => handleEmail()}>
                       <EmailIcon />
-                      <Typography>Contact me</Typography>
+                      <Typography>Contato</Typography>
                     </StyledButton>
                   </Grid>
                 </Grid>
