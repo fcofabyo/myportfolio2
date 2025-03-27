@@ -38,7 +38,7 @@ const ProjectsSection: React.FC = () => {
       description:
         "Um jogo de labirinto desenvolvido com JavaScript e HTML Canvas. O objetivo é encontrar a saída do labirinto enquanto evita obstáculos. O projeto foi criado para explorar conceitos de lógica de programação e manipulação de gráficos no Canvas.",
       technologies: "Technologies: JavaScript, HTML, Canvas",
-      websiteURL: "https://example.com/labirinto",
+      websiteURL: "https://labirinto-1bb7.vercel.app/",
       codeURL: "https://github.com/fcofabyo/labirinto",
     },
   ];
@@ -109,7 +109,7 @@ const ProjectsSection: React.FC = () => {
               transition={{ duration: 0.5 }}
               style={{
                 width: "100%",
-                height: "660px", // 🔥 Força o tamanho fixo, evitando movimentação das setas
+                height: "750px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",

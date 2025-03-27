@@ -55,7 +55,7 @@ export default function Navbar() {
       // Defina deslocamentos específicos para cada seção
       const offsets: { [key: string]: number } = {
         about: 50, // Deslocamento menor para "Sobre mim"
-        projects: -100, // Deslocamento maior para "Projetos"
+        projects: -200, // Deslocamento maior para "Projetos"
       };
 
       const offset = offsets[id] || 0; // Valor padrão caso o ID não esteja no objeto
