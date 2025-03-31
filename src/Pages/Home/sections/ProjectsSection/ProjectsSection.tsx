@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Box, Container, Typography, styled, IconButton } from "@mui/material";
+import { Box, Container, Typography, styled } from "@mui/material";
 import { motion } from "framer-motion";
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import ProjectCard from "../../../../components/ProjectCard/ProjectCard";
 
 const ProjectsSection: React.FC = () => {
@@ -13,7 +12,7 @@ const ProjectsSection: React.FC = () => {
     {
       title: "Projeto 1",
       subtitle: "Jan 2025 - Mar 2025",
-      srcImg: "/src/assets/images/project-trello.png",
+      srcImg: "/src/assets/images/fswdonalds.png",
       description:
         "Foi utilizado tecnologias como JavaScript, TypeScript, CSS com Tailwind, React, Next.js, integração ao banco de dados PostgreSQL usando o Prisma.IO. O projeto foi pensado para ser responsivo, garantindo uma ótima experiência no mobile, e o deploy foi realizado na Vercel",
       technologies:
@@ -24,7 +23,7 @@ const ProjectsSection: React.FC = () => {
     {
       title: "Projeto 2",
       subtitle: "Jul 2024 - Jul 2024",
-      srcImg: "/src/assets/images/project-financas.png",
+      srcImg: "src/assets/images/gerenciador.png",
       description:
         "Desenvolvi um gerenciador de tarefas em React, trazendo em si o método CRUD (Criar, Ler, Atualizar e Deletar), permitindo uma gestão simples e eficiente das tarefas. O projeto foi desenvolvido com o intuito de aprender e praticar os conceitos de React e Tailwind. Foi utilizado o localStorage para armazenar as tarefas adicionadas.",
       technologies: "Technologies: JavaScript, HTML, CSS(Tailwind), React",
@@ -34,7 +33,7 @@ const ProjectsSection: React.FC = () => {
     {
       title: "Projeto Labirinto",
       subtitle: "Jul 2024 - Jul 2024",
-      srcImg: "/src/assets/images/project1-craze-maze.gif",
+      srcImg: "/src/assets/images/labirinto.gif",
       description:
         "Um jogo de labirinto desenvolvido com JavaScript e HTML Canvas. O objetivo é encontrar a saída do labirinto enquanto evita obstáculos. O projeto foi criado para explorar conceitos de lógica de programação e manipulação de gráficos no Canvas.",
       technologies: "Technologies: JavaScript, HTML, Canvas",
@@ -44,16 +43,6 @@ const ProjectsSection: React.FC = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
-    );
-  };
 
   return (
     <StyledExperience>
@@ -74,33 +63,24 @@ const ProjectsSection: React.FC = () => {
           justifyContent="center"
           pb={8}
           minHeight="500px"
-          marginBottom="50px" // Garante que a altura do container nunca diminua
+          marginBottom="50px"
         >
-          {/* Botão de voltar */}
-          <IconButton
-            onClick={handlePrev}
+          {/* Aviso para deslizar */}
+          <Typography
+            variant="body1"
+            color="white"
             style={{
-              position: "absolute",
-              left: "10px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              zIndex: 10,
-              color: "white",
-              width: "40px",
-              height: "40px",
-              backgroundColor: "black",
+              position: "absolute", // Posiciona o texto em relação ao contêiner
+              top: "10px", // Distância do topo
+              left: "310px", // Move o texto mais para a direita
+              zIndex: 1000, // Garante que o texto fique acima de outros elementos
             }}
           >
-            <ArrowBackIos
-              style={{
-                fontSize: "25px", // Ajusta o tamanho do ícone
-                marginLeft: "8px", // Corrige o desalinhamento horizontal do ícone
-              }}
-            />
-          </IconButton>
+            Deslize para o lado
+          </Typography>
 
           {/* Container fixo do carrossel */}
-          <div style={{ width: "100%", maxWidth: "600px" }}>
+          <div style={{ width: "100%", maxWidth: "700px" }}>
             <motion.div
               key={currentIndex}
               initial={{ opacity: 0, x: -100 }}
@@ -128,23 +108,35 @@ const ProjectsSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Botão de avançar */}
-          <IconButton
-            onClick={handleNext}
+          {/* Indicadores de navegação */}
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            mt={2} // Margem superior para separar os pontos do carrossel
             style={{
-              position: "absolute",
-              right: "10px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              zIndex: 10,
-              color: "white",
-              width: "40px",
-              height: "40px",
-              backgroundColor: "black",
+              position: "absolute", // Garante que os pontos fiquem posicionados em relação ao carrossel
+              bottom: "70px", // Posiciona os pontos abaixo do carrossel
+              left: "50%", // Centraliza horizontalmente
+              transform: "translateX(-50%)", // Ajusta o alinhamento central
             }}
           >
-            <ArrowForwardIos />
-          </IconButton>
+            {projects.map((_, index) => (
+              <div
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                style={{
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "50%",
+                  backgroundColor: currentIndex === index ? "#000" : "#ccc",
+                  margin: "0 5px",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s ease",
+                }}
+              />
+            ))}
+          </Box>
         </Box>
       </Container>
     </StyledExperience>
