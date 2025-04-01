@@ -10,8 +10,8 @@ const ProjectsSection: React.FC = () => {
 
   const projects = [
     {
-      title: "Projeto 1",
-      subtitle: "Jan 2025 - Mar 2025",
+      title: "",
+      subtitle: "",
       srcImg: "/src/assets/images/fswdonalds.png",
       description:
         "Foi utilizado tecnologias como JavaScript, TypeScript, CSS com Tailwind, React, Next.js, integração ao banco de dados PostgreSQL usando o Prisma.IO. O projeto foi pensado para ser responsivo, garantindo uma ótima experiência no mobile, e o deploy foi realizado na Vercel",
@@ -21,8 +21,8 @@ const ProjectsSection: React.FC = () => {
       codeURL: "https://github.com/fcofabyo/Donalds-react-next",
     },
     {
-      title: "Projeto 2",
-      subtitle: "Jul 2024 - Jul 2024",
+      title: "",
+      subtitle: "",
       srcImg: "src/assets/images/gerenciador.png",
       description:
         "Desenvolvi um gerenciador de tarefas em React, trazendo em si o método CRUD (Criar, Ler, Atualizar e Deletar), permitindo uma gestão simples e eficiente das tarefas. O projeto foi desenvolvido com o intuito de aprender e praticar os conceitos de React e Tailwind. Foi utilizado o localStorage para armazenar as tarefas adicionadas.",
@@ -31,8 +31,8 @@ const ProjectsSection: React.FC = () => {
       codeURL: "https://github.com/fcofabyo/curso-de-react",
     },
     {
-      title: "Projeto Labirinto",
-      subtitle: "Jul 2024 - Jul 2024",
+      title: "",
+      subtitle: "",
       srcImg: "/src/assets/images/labirinto.gif",
       description:
         "Um jogo de labirinto desenvolvido com JavaScript e HTML Canvas. O objetivo é encontrar a saída do labirinto enquanto evita obstáculos. O projeto foi criado para explorar conceitos de lógica de programação e manipulação de gráficos no Canvas.",
@@ -71,9 +71,11 @@ const ProjectsSection: React.FC = () => {
             color="white"
             style={{
               position: "absolute", // Posiciona o texto em relação ao contêiner
-              top: "10px", // Distância do topo
-              left: "310px", // Move o texto mais para a direita
+              top: "1px", // Distância do topo
+              left: "85px", // Centraliza horizontalmente na tela
+              transform: "translateX(-50%)", // Ajusta para que o texto fique centralizado
               zIndex: 1000, // Garante que o texto fique acima de outros elementos
+              fontSize: "15px",
             }}
           >
             Deslize para o lado
