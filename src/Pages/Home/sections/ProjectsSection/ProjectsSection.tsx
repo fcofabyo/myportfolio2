@@ -12,7 +12,7 @@ const ProjectsSection: React.FC = () => {
     {
       title: "",
       subtitle: "",
-      srcImg: "public/images/fswdonalds.png",
+      srcImg: "/images/fswdonalds.png",
       description:
         "Foi utilizado tecnologias como JavaScript, TypeScript, CSS com Tailwind, React, Next.js, integração ao banco de dados PostgreSQL usando o Prisma.IO. O projeto foi pensado para ser responsivo, garantindo uma ótima experiência no mobile, e o deploy foi realizado na Vercel",
       technologies:
@@ -23,7 +23,7 @@ const ProjectsSection: React.FC = () => {
     {
       title: "",
       subtitle: "",
-      srcImg: "public/images/gerenciador.png",
+      srcImg: "/images/gerenciador.png",
       description:
         "Desenvolvi um gerenciador de tarefas em React, trazendo em si o método CRUD (Criar, Ler, Atualizar e Deletar), permitindo uma gestão simples e eficiente das tarefas. O projeto foi desenvolvido com o intuito de aprender e praticar os conceitos de React e Tailwind. Foi utilizado o localStorage para armazenar as tarefas adicionadas.",
       technologies: "Technologies: JavaScript, HTML, CSS(Tailwind), React",
@@ -33,7 +33,7 @@ const ProjectsSection: React.FC = () => {
     {
       title: "",
       subtitle: "",
-      srcImg: "public/images/labirinto.gif",
+      srcImg: "/images/labirinto.gif",
       description:
         "Um jogo de labirinto desenvolvido com JavaScript e HTML Canvas. O objetivo é encontrar a saída do labirinto enquanto evita obstáculos. O projeto foi criado para explorar conceitos de lógica de programação e manipulação de gráficos no Canvas.",
       technologies: "Technologies: JavaScript, HTML, Canvas",
