@@ -25,8 +25,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     objectFit: "contain",
     height: "80vw",
     padding: "3px 0",
+    marginTop: "15px", // ⬅️ Adiciona um espaçamento fixo no topo
+    marginBottom: "15px", // ⬅️ Adiciona um espaçamento fixo abaixo da imagem
     [theme.breakpoints.up("md")]: {
       height: "45vh",
+      marginTop: "20px", // ⬅️ Aumenta um pouco o espaçamento em telas maiores
+      marginBottom: "20px",
     },
   }));
 

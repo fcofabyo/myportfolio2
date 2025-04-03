@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Box, Container, Typography, styled } from "@mui/material";
 import { motion } from "framer-motion";
 import ProjectCard from "../../../../components/ProjectCard/ProjectCard";
@@ -43,6 +43,30 @@ const ProjectsSection: React.FC = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  // Funções para capturar o toque na tela
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const deltaX = touchStartX.current - touchEndX.current;
+    const threshold = 50; // Distância mínima para considerar como swipe
+
+    if (deltaX > threshold) {
+      // Deslizar para a esquerda (próximo projeto)
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    } else if (deltaX < -threshold) {
+      // Deslizar para a direita (projeto anterior)
+      setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+    }
+  };
 
   return (
     <StyledExperience>
@@ -64,17 +88,20 @@ const ProjectsSection: React.FC = () => {
           pb={8}
           minHeight="500px"
           marginBottom="50px"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Aviso para deslizar */}
           <Typography
             variant="body1"
             color="white"
             style={{
-              position: "absolute", // Posiciona o texto em relação ao contêiner
-              top: "1px", // Distância do topo
-              left: "85px", // Centraliza horizontalmente na tela
-              transform: "translateX(-50%)", // Ajusta para que o texto fique centralizado
-              zIndex: 1000, // Garante que o texto fique acima de outros elementos
+              position: "absolute",
+              top: "10px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 1000,
               fontSize: "15px",
             }}
           >
@@ -115,12 +142,12 @@ const ProjectsSection: React.FC = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            mt={2} // Margem superior para separar os pontos do carrossel
+            mt={2}
             style={{
-              position: "absolute", // Garante que os pontos fiquem posicionados em relação ao carrossel
-              bottom: "70px", // Posiciona os pontos abaixo do carrossel
-              left: "50%", // Centraliza horizontalmente
-              transform: "translateX(-50%)", // Ajusta o alinhamento central
+              position: "absolute",
+              bottom: "70px",
+              left: "50%",
+              transform: "translateX(-50%)",
             }}
           >
             {projects.map((_, index) => (
